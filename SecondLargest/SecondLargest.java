@@ -14,11 +14,9 @@ public class SecondLargest {
      */
     public static void main(String[] args) throws IOException {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
-        System.out.println("Test Cases");
         int T = Integer.parseInt(br.readLine());
         int size;
         while(T-- > 0){
-            System.out.println("Size:");
             size = Integer.parseInt(br.readLine());
             String[] input = br.readLine().split(" ");
             int largest = Math.max(Integer.parseInt(input[0]), Integer.parseInt(input[1]));
@@ -30,10 +28,12 @@ public class SecondLargest {
                         secondLargest = largest;
                         largest = current;
                     } else {
-                        secondLargest = current;
+                        //remove below line & see changes
+                        if(current != largest)
+                            secondLargest = current;
                     }
             }
-            System.out.println(secondLargest);
+            System.out.println((largest == secondLargest)?-1:secondLargest);
         }
     }
     
