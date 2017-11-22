@@ -12,7 +12,7 @@ class Philospher {
 	}
 }
 
-public class Test {
+public class Main {
 	static Philospher[] p = new Philospher[5];
 	static int max = 5;
 	static void pickup(int i) {
@@ -31,7 +31,7 @@ public class Test {
 		if(p[(i+1)% 5].state == "HUNGRY") test((i+1)% 5);
 	}
 	static void test(int i) {
-		if(p[(i+4)%5].state != "EATING" && p[i].state == "HUNGRY" && p[(i+4)%5].state != "EATING") {
+		if(p[(i+4)%5].state != "EATING" && p[i].state == "HUNGRY" && p[(i+1)%5].state != "EATING") {
 			p[i].state = "EATING";
 			p[i].self = true;
 			System.out.println("p["+i+"] is eating");
@@ -39,6 +39,9 @@ public class Test {
 	}
 
 	public static void main(String[] args) throws IOException {
+		System.out.println("-------------------------");
+		System.out.println("The program has started..");
+		System.out.println("-------------------------");
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		for(int i = 0; i < 5; i++) p[i] = new Philospher();
 		String command;
