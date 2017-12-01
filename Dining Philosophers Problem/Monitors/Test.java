@@ -12,11 +12,11 @@ class Philospher {
 	}
 }
 
-public class Main {
+class Test {
 	static Philospher[] p = new Philospher[5];
 	static int max = 5;
 	static void pickup(int i) {
-		if(p[i].self == true){
+		if (p[i].self == true){
 			System.out.println("p["+i+"] Already in queue !");
 			return;
 		}
@@ -24,14 +24,19 @@ public class Main {
 		test(i);
 	}
 	static void putsdown(int i) {
+                if (!"EATING".equals(p[i].state)) {
+                        System.out.println("p["+i+"] is not Eating.");
+                        System.out.println("p["+i+"] is in "+ p[i].state +" state");
+                        return;
+                }
 		p[i].state = "THINKING";
 		p[i].self = false;
 		System.out.println("p["+i+"] has put down forks");
-		if(p[(i+4)% 5].state == "HUNGRY") test((i+4)% 5);
-		if(p[(i+1)% 5].state == "HUNGRY") test((i+1)% 5);
+		if("HUNGRY".equals(p[(i+4)% 5].state)) test((i+4)% 5);
+		if("HUNGRY".equals(p[(i+1)% 5].state)) test((i+1)% 5);
 	}
 	static void test(int i) {
-		if(p[(i+4)%5].state != "EATING" && p[i].state == "HUNGRY" && p[(i+1)%5].state != "EATING") {
+		if(!"EATING".equals(p[(i+4)%5].state) && "HUNGRY".equals(p[i].state) && !"EATING".equals(p[(i+1)%5].state)) {
 			p[i].state = "EATING";
 			p[i].self = true;
 			System.out.println("p["+i+"] is eating");
