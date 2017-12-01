@@ -1,3 +1,5 @@
+package test;
+
 //Refer OS by Galvin
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -50,16 +52,16 @@ class Test {
 		BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
 		for(int i = 0; i < 5; i++) p[i] = new Philospher();
 		String command;
-	    String[] temp = new String[2];
-	    int pid;
-	    while(true) {
-	    	temp = br.readLine().trim().split(" ");
-	    	command = temp[0];
-	    	pid = Integer.parseInt(temp[1]);
-	    	if(pid < max){
-	    		if(command.equals("eat")) pickup(pid);
-	    		else if(command.equals("end")) putsdown(pid);
-	    	} else System.out.println("Philospher not present");
-	    }
+                String[] temp = new String[2];
+                int pid;
+                while(true) {
+                        temp = br.readLine().trim().split(" ");
+                        command = temp[0];
+                        pid = Integer.parseInt(temp[1]);
+                        if(pid < max){
+                                if(command.equals("eat")) pickup(pid);
+                                else if(command.equals("end")) putsdown(pid);
+                        } else System.out.println("Philospher not present");
+                }
 	}
 }
